@@ -1,0 +1,38 @@
+package hii;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+
+public class DiwaliSaleBOGO {
+
+	public static void main(String[] args) {
+        List<Integer> productPrices = List.of(10, 20, 30, 40, 50, 50, 60);
+        maximizeDiscount(productPrices);
+    }
+
+    public static void maximizeDiscount(List<Integer> prices) {
+        
+        List<Integer> sortedPrices = new ArrayList<>(prices);
+        Collections.sort(sortedPrices, Collections.reverseOrder());
+
+        List<Integer> payableItems = new ArrayList<>();
+        List<Integer> freeItems = new ArrayList<>();
+
+        
+        for (int i = 0; i < sortedPrices.size(); i++) {
+            
+            payableItems.add(sortedPrices.get(i));
+            i++;
+
+            
+            if (i < sortedPrices.size()) {
+                freeItems.add(sortedPrices.get(i));
+            }
+        }
+
+       
+        System.out.println("Payable Items: " + payableItems);
+        System.out.println("Discounted Items (Free): " + freeItems);
+    }
+}
